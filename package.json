@@ -1,0 +1,32 @@
+{
+  "name": "markmedia",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)",
+  "main": "index.js",
+"scripts": {
+  "copy:popper": "cpx \"node_modules/@popperjs/core/dist/umd/popper.min.js\" js/",
+  "sass": "sass scss/style.scss css/style.css --source-map",
+  "minify": "postcss css/style.css --replace --map",
+  "build": "npm run sass && npm run minify && npm run copy:popper",
+  "browsersync": "browser-sync start --server --files \"css/*.css, *.html, js/*.js\"",
+  "watch": "chokidar \"scss/**/*.scss\" -c \"npm run build\" && npm run browsersync"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "aos": "^2.3.4",
+    "autoprefixer": "^10.4.20",
+    "browser-sync": "^3.0.3",
+    "chokidar-cli": "^3.0.0",
+    "cpx": "^1.5.0",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.85.0"
+  }
+}
